@@ -18,33 +18,44 @@ public class UserController {
     @GetMapping
     public ResponseEntity getOneUser(@RequestParam Long id) {
         try {
-            return ResponseEntity.ok(userService.getOne(id)); //I will probably correct it for the modern option
+            return ResponseEntity.ok(userService.getOne(id));
         } catch (UserNotFoundException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
+        }
+        catch (Exception e) {
+            return ResponseEntity.badRequest().body("An error has occurred!");
+        }
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity getUsers() {
+        try {
+//            userService.findAll();
+            return ResponseEntity.ok("All users"); //I will probably correct it for the modern option
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("An error has occurred!");
         }
     }
 
-//    @GetMapping
-//    public ResponseEntity getUsers() {
-//        try {
-////            userService.findAll();
-//            return ResponseEntity.ok("The server is running..."); //I will probably correct it for the modern option
-//        } catch (Exception e) {
-//            return ResponseEntity.badRequest().body("An error has occurred!");
-//        }
-//    }
-
     @PostMapping
     public ResponseEntity registration(@RequestBody UserEntity user) {
         try {
             userService.registration(user);
-            return ResponseEntity.ok("The user is completely added."); //I will probably correct it for the modern option
+            return ResponseEntity.ok("The user is completely added.");
         } catch (UserAlreadyExistException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("An error has occurred!");
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteUser(@PathVariable Long id){
+        try {
+            return ResponseEntity.ok(userService.delete(id)+" user has been deleted"); //I will probably correct it for the modern option
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("An error has occurred!");
+        }
+    }
+
 }
