@@ -1,11 +1,11 @@
 package testTask.familyBudget.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import testTask.familyBudget.entity.UserEntity;
 import testTask.familyBudget.exception.UserAlreadyExistException;
 import testTask.familyBudget.exception.UserNotFoundException;
+import testTask.familyBudget.model.User;
 import testTask.familyBudget.repository.UserRepository;
 
 @Service
@@ -21,11 +21,11 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public UserEntity getOne(Long id) throws UserNotFoundException {
+    public User getOne(Long id) throws UserNotFoundException {
         UserEntity user = userRepository.findById(id).get();
         if (user == null) {
             throw new UserNotFoundException("User is not found. Please check your ID.");
         }
-        return user;
+        return User.toModel(user);
     }
 }

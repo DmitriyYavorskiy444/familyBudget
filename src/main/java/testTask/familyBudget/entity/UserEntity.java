@@ -13,8 +13,17 @@ public class UserEntity {
 
     private String userName;
     private String role;
+    private String password;
 
     public UserEntity() {
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Long getId() {
