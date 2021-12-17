@@ -30,6 +30,10 @@ public class UserService {
         return User.toModel(user);
     }
 
+//    public List<UserEntity> getAll() throws UserNotFoundException {
+//        return userRepository.findAll();
+//    }
+
     public Long delete(Long id) {
         userRepository.deleteById(id);
         return id;
