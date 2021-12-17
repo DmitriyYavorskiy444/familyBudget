@@ -21,6 +21,10 @@ public class UserEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<TodoEntity> todos;
 
+    @ManyToOne
+    @JoinColumn(name = "family_id")
+    private FamilyEntity family;
+
     public UserEntity() {
     }
 }

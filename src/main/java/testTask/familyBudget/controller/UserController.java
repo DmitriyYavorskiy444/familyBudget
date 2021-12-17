@@ -3,13 +3,11 @@ package testTask.familyBudget.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import testTask.familyBudget.entity.FamilyEntity;
 import testTask.familyBudget.entity.UserEntity;
 import testTask.familyBudget.exception.UserAlreadyExistException;
 import testTask.familyBudget.exception.UserNotFoundException;
-import testTask.familyBudget.repository.UserRepository;
 import testTask.familyBudget.service.UserService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -62,6 +60,25 @@ public class UserController {
             return ResponseEntity.ok(userService.delete(id) + " user has been deleted"); //I will probably correct it for the modern option
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("An error has occurred!");
+        }
+    }
+
+    @PostMapping("/createUser")
+    public ResponseEntity createUser(@RequestBody UserEntity user,
+                                     @RequestParam Long familyId){
+        try {
+
+        } catch (Exception e){
+
+        }
+    }
+
+    @PutMapping("/createUser")
+    public ResponseEntity updateUser(@RequestParam Long familyId){
+        try {
+
+        } catch (Exception e){
+
         }
     }
 
