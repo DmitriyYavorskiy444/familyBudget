@@ -10,7 +10,7 @@ import testTask.familyBudget.exception.UserNotFoundException;
 import testTask.familyBudget.service.FamilyService;
 
 @RestController
-@RequestMapping("/api/v1/family")
+@RequestMapping("/api/v1/families")
 public class FamilyController {
     @Autowired
     private FamilyService familyService;
