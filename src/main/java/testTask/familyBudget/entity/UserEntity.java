@@ -21,6 +21,7 @@ public class UserEntity {
     private String password;
     private BigDecimal balance;
 
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @JsonIgnore
     private List<TodoEntity> todos;
