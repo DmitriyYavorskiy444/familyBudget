@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import testTask.familyBudget.entity.FamilyEntity;
-import testTask.familyBudget.entity.UserEntity;
-import testTask.familyBudget.exception.UserAlreadyExistException;
-import testTask.familyBudget.exception.UserNotFoundException;
+import testTask.familyBudget.exception.AlreadyExistException;
+import testTask.familyBudget.exception.NotFoundException;
+import testTask.familyBudget.model.Family;
+import testTask.familyBudget.model.User;
 import testTask.familyBudget.service.FamilyService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/families")
@@ -19,11 +22,16 @@ public class FamilyController {
     public ResponseEntity getOneFamily(@RequestParam Long id) {
         try {
             return ResponseEntity.ok(familyService.getOne(id));
-        } catch (UserNotFoundException e) {
+        } catch (NotFoundException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("An error has occurred!");
         }
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<Family>> getAllFamilies() {
+        return ResponseEntity.ok(familyService.getAll());
     }
 
     @PostMapping
@@ -31,7 +39,7 @@ public class FamilyController {
         try {
             familyService.registration(family);
             return ResponseEntity.ok("The family is completely added.");
-        } catch (UserAlreadyExistException e) {
+        } catch (AlreadyExistException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("An error has occurred!");

@@ -1,11 +1,11 @@
 package testTask.familyBudget.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import testTask.familyBudget.entity.TodoEntity;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 public class Todo {
     private Long id;
     private String title;
@@ -14,11 +14,9 @@ public class Todo {
     public static Todo toModel(TodoEntity entity) {
         Todo model = new Todo();
         model.setId(entity.getId());
-        model.setCompleted(entity.getCompleted());
         model.setTitle(entity.getTitle());
+        model.setCompleted(entity.getCompleted());
         return model;
     }
 
-    public Todo() {
-    }
 }

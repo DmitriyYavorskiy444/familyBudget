@@ -1,15 +1,15 @@
 package testTask.familyBudget.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import testTask.familyBudget.entity.UserEntity;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 public class User {
     private Long id;
     private String userName;
@@ -27,6 +27,4 @@ public class User {
         return model;
     }
 
-    public User() {
-    }
 }
