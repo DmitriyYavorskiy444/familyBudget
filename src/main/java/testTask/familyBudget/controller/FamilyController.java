@@ -7,7 +7,6 @@ import testTask.familyBudget.entity.FamilyEntity;
 import testTask.familyBudget.exception.AlreadyExistException;
 import testTask.familyBudget.exception.NotFoundException;
 import testTask.familyBudget.model.Family;
-import testTask.familyBudget.model.User;
 import testTask.familyBudget.service.FamilyService;
 
 import java.util.List;

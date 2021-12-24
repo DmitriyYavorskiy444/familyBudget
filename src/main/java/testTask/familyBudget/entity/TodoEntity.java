@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "todo")
 public class TodoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

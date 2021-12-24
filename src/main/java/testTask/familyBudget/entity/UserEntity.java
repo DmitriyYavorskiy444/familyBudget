@@ -11,6 +11,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+@Table (name = "userApi")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
